@@ -176,19 +176,28 @@
     keymap {
         compatible = "zmk,keymap";
 
+// 42-key Corne mapping: 6 columns per side + 3 thumbs per side.
+// Outer pinky columns (col 0 left, col 11 right) are &none — not used by Miryoku.
+//
+// ╭────┬────┬────┬────┬────┬────╮   ╭────┬────┬────┬────┬────┬────╮
+// │ XX │ K00│ K01│ K02│ K03│ K04│   │ K05│ K06│ K07│ K08│ K09│ XX │
+// │ XX │ K10│ K11│ K12│ K13│ K14│   │ K15│ K16│ K17│ K18│ K19│ XX │
+// │ XX │ K20│ K21│ K22│ K23│ K24│   │ K25│ K26│ K27│ K28│ K29│ XX │
+// ╰────┴────┴────┼────┼────┼────┤   ├────┼────┼────┴────┴────┴────╯
+//                │ K32│ K33│ K34│   │ K35│ K36│ K37│
+//                ╰────┴────┴────╯   ╰────┴────┴────╯
+
         // ── BASE (QWERTY + home-row mods) ───────────────────────────────────
         BASE {
             display-name = "Base";
             bindings = <
-// ╭──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────────────────╮   ╭──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────────────────╮
-   &kp Q              &kp W              &kp E              &kp R              &kp T                   &kp Y              &kp U              &kp I              &kp O              &kp P
-// ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤   ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-   &u_mt LGUI A       &u_mt LALT S       &u_mt LCTRL D      &u_mt LSHFT F      &kp G                   &kp H              &u_mt LSHFT J      &u_mt LCTRL K      &u_mt LALT L       &u_mt LGUI SQT
-// ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤   ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-   &u_lt BUTTON Z     &u_mt RALT X       &kp C              &kp V              &kp B                   &kp N              &kp M              &kp COMMA          &u_mt RALT DOT     &u_lt BUTTON SLASH
-// ╰──────────────────┴──────────────────┴──────────────────┼──────────────────┼──────────────────┤   ├──────────────────┼──────────────────┼──────────────────┴──────────────────┴──────────────────╯
-                                         &u_lt MEDIA ESC    &u_lt NAV SPACE    &u_lt MOUSE TAB         &u_lt SYM RET      &u_lt NUM BSPC     &u_lt FUN DEL
-//                                       ╰──────────────────┴──────────────────┴──────────────────╯   ╰──────────────────┴──────────────────┴──────────────────╯
+// ╭──────┬──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────────────────╮   ╭──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────╮
+   &none   &kp Q              &kp W              &kp E              &kp R              &kp T                   &kp Y              &kp U              &kp I              &kp O              &kp P              &none
+   &none   &u_mt LGUI A       &u_mt LALT S       &u_mt LCTRL D      &u_mt LSHFT F      &kp G                   &kp H              &u_mt LSHFT J      &u_mt LCTRL K      &u_mt LALT L       &u_mt LGUI SQT     &none
+   &none   &u_lt BUTTON Z     &u_mt RALT X       &kp C              &kp V              &kp B                   &kp N              &kp M              &kp COMMA          &u_mt RALT DOT     &u_lt BUTTON SLASH &none
+// ╰──────┴──────────────────┴──────────────────┼──────────────────┼──────────────────┼──────────────────┤   ├──────────────────┼──────────────────┼──────────────────┴──────────────────┴──────────────────┴──────╯
+                                                  &u_lt MEDIA ESC   &u_lt NAV SPACE    &u_lt MOUSE TAB         &u_lt SYM RET      &u_lt NUM BSPC     &u_lt FUN DEL
+//                                               ╰──────────────────┴──────────────────┴──────────────────╯   ╰──────────────────┴──────────────────┴──────────────────╯
             >;
         };
 
@@ -196,10 +205,10 @@
         EXTRA {
             display-name = "Extra";
             bindings = <
-   &kp Q              &kp W              &kp F              &kp P              &kp B                   &kp J              &kp L              &kp U              &kp Y              &kp SQT
-   &u_mt LGUI A       &u_mt LALT R       &u_mt LCTRL S      &u_mt LSHFT T      &kp G                   &kp M              &u_mt LSHFT N      &u_mt LCTRL E      &u_mt LALT I       &u_mt LGUI O
-   &u_lt BUTTON Z     &u_mt RALT X       &kp C              &kp D              &kp V                   &kp K              &kp H              &kp COMMA          &u_mt RALT DOT     &u_lt BUTTON SLASH
-                                         &u_lt MEDIA ESC    &u_lt NAV SPACE    &u_lt MOUSE TAB         &u_lt SYM RET      &u_lt NUM BSPC     &u_lt FUN DEL
+   &none   &kp Q              &kp W              &kp F              &kp P              &kp B                   &kp J              &kp L              &kp U              &kp Y              &kp SQT            &none
+   &none   &u_mt LGUI A       &u_mt LALT R       &u_mt LCTRL S      &u_mt LSHFT T      &kp G                   &kp M              &u_mt LSHFT N      &u_mt LCTRL E      &u_mt LALT I       &u_mt LGUI O       &none
+   &none   &u_lt BUTTON Z     &u_mt RALT X       &kp C              &kp D              &kp V                   &kp K              &kp H              &kp COMMA          &u_mt RALT DOT     &u_lt BUTTON SLASH &none
+                                                  &u_lt MEDIA ESC   &u_lt NAV SPACE    &u_lt MOUSE TAB         &u_lt SYM RET      &u_lt NUM BSPC     &u_lt FUN DEL
             >;
         };
 
@@ -207,10 +216,10 @@
         TAP {
             display-name = "Tap";
             bindings = <
-   &kp Q   &kp W   &kp E   &kp R     &kp T     &kp Y    &kp U    &kp I     &kp O    &kp P
-   &kp A   &kp S   &kp D   &kp F     &kp G     &kp H    &kp J    &kp K     &kp L    &kp SQT
-   &kp Z   &kp X   &kp C   &kp V     &kp B     &kp N    &kp M    &kp COMMA &kp DOT  &kp SLASH
-                   &kp ESC &kp SPACE &kp TAB   &kp RET  &kp BSPC &kp DEL
+   &none  &kp Q   &kp W   &kp E   &kp R     &kp T     &kp Y    &kp U    &kp I     &kp O    &kp P     &none
+   &none  &kp A   &kp S   &kp D   &kp F     &kp G     &kp H    &kp J    &kp K     &kp L    &kp SQT   &none
+   &none  &kp Z   &kp X   &kp C   &kp V     &kp B     &kp N    &kp M    &kp COMMA &kp DOT  &kp SLASH &none
+                           &kp ESC &kp SPACE &kp TAB   &kp RET  &kp BSPC &kp DEL
             >;
         };
 
@@ -218,10 +227,10 @@
         BUTTON {
             display-name = "Button";
             bindings = <
-   &kp K_UNDO  &kp LS(DEL) &kp LC(INS) &kp LS(INS) &kp K_AGAIN   &kp K_AGAIN &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO
-   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
-   &kp K_UNDO  &kp LS(DEL) &kp LC(INS) &kp LS(INS) &kp K_AGAIN   &kp K_AGAIN &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO
-                            &mkp MB3    &mkp MB1    &mkp MB2       &mkp MB2    &mkp MB1    &mkp MB3
+   &none  &kp K_UNDO  &kp LS(DEL) &kp LC(INS) &kp LS(INS) &kp K_AGAIN   &kp K_AGAIN &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO  &none
+   &none  &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none          &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI    &none
+   &none  &kp K_UNDO  &kp LS(DEL) &kp LC(INS) &kp LS(INS) &kp K_AGAIN   &kp K_AGAIN &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO  &none
+                                   &mkp MB3    &mkp MB1    &mkp MB2       &mkp MB2    &mkp MB1    &mkp MB3
             >;
         };
 
@@ -229,10 +238,10 @@
         NAV {
             display-name = "Nav";
             bindings = <
-   &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &kp K_AGAIN &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO
-   &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &u_caps_word &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT
-   &none        &kp RALT    &u_to_NUM    &u_to_NAV   &none          &kp INS     &kp HOME    &kp PG_DN   &kp PG_UP   &kp END
-                            &none        &none        &none          &kp RET     &kp BSPC    &kp DEL
+   &none  &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &kp K_AGAIN  &kp LS(INS) &kp LC(INS) &kp LS(DEL) &kp K_UNDO  &none
+   &none  &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &u_caps_word &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &none
+   &none  &none        &kp RALT    &u_to_NUM    &u_to_NAV   &none          &kp INS      &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &none
+                                    &none        &none        &none          &kp RET      &kp BSPC    &kp DEL
             >;
         };
 
@@ -240,10 +249,10 @@
         MOUSE {
             display-name = "Mouse";
             bindings = <
-   &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &kp K_AGAIN &kp LS(INS)     &kp LC(INS)     &kp LS(DEL)     &kp K_UNDO
-   &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &none       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT
-   &none        &kp RALT    &u_to_SYM    &u_to_MOUSE &none          &none       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT
-                            &none        &none        &none          &mkp MB2    &mkp MB1        &mkp MB3
+   &none  &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &kp K_AGAIN &kp LS(INS)     &kp LC(INS)     &kp LS(DEL)     &kp K_UNDO      &none
+   &none  &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &none       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &none
+   &none  &none        &kp RALT    &u_to_SYM    &u_to_MOUSE &none          &none       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT &none
+                                    &none        &none        &none          &mkp MB2    &mkp MB1        &mkp MB3
             >;
         };
 
@@ -251,10 +260,10 @@
         MEDIA {
             display-name = "Media";
             bindings = <
-   &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI
-   &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &ext_power EP_TOG &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP     &kp C_NEXT
-   &none        &kp RALT    &u_to_FUN    &u_to_MEDIA &none          &u_out_tog       &u_bt_sel_0      &u_bt_sel_1      &u_bt_sel_2      &u_bt_sel_3
-                            &none        &none        &none          &kp C_STOP       &kp C_PP         &kp C_MUTE
+   &none  &bootloader  &u_to_TAP   &u_to_EXTRA  &u_to_BASE  &none          &rgb_ug RGB_TOG   &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &none
+   &none  &kp LGUI     &kp LALT    &kp LCTRL    &kp LSHFT   &none          &ext_power EP_TOG &kp C_PREV       &kp C_VOL_DN     &kp C_VOL_UP     &kp C_NEXT       &none
+   &none  &none        &kp RALT    &u_to_FUN    &u_to_MEDIA &none          &u_out_tog        &u_bt_sel_0      &u_bt_sel_1      &u_bt_sel_2      &u_bt_sel_3      &none
+                                    &none        &none        &none          &kp C_STOP        &kp C_PP         &kp C_MUTE
             >;
         };
 
@@ -262,10 +271,10 @@
         NUM {
             display-name = "Num";
             bindings = <
-   &kp LBKT  &kp N7  &kp N8   &kp N9  &kp RBKT      &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader
-   &kp SEMI  &kp N4  &kp N5   &kp N6  &kp EQUAL      &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI
-   &kp GRAVE &kp N1  &kp N2   &kp N3  &kp BSLH       &none  &u_to_NUM    &u_to_NAV    &kp RALT    &none
-                     &kp DOT  &kp N0  &kp MINUS       &none  &none        &none
+   &none  &kp LBKT  &kp N7  &kp N8   &kp N9  &kp RBKT      &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader  &none
+   &none  &kp SEMI  &kp N4  &kp N5   &kp N6  &kp EQUAL      &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI     &none
+   &none  &kp GRAVE &kp N1  &kp N2   &kp N3  &kp BSLH       &none  &u_to_NUM    &u_to_NAV    &kp RALT    &none        &none
+                             &kp DOT  &kp N0  &kp MINUS       &none  &none        &none
             >;
         };
 
@@ -273,10 +282,10 @@
         SYM {
             display-name = "Sym";
             bindings = <
-   &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC      &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader
-   &kp COLON  &kp DLLR  &kp PRCNT  &kp CARET &kp PLUS       &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI
-   &kp TILDE  &kp EXCL  &kp AT     &kp HASH  &kp PIPE       &none  &u_to_SYM    &u_to_MOUSE  &kp RALT    &none
-                         &kp LPAR  &kp RPAR  &kp UNDER       &none  &none        &none
+   &none  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC      &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader  &none
+   &none  &kp COLON  &kp DLLR  &kp PRCNT  &kp CARET &kp PLUS       &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI     &none
+   &none  &kp TILDE  &kp EXCL  &kp AT     &kp HASH  &kp PIPE       &none  &u_to_SYM    &u_to_MOUSE  &kp RALT    &none        &none
+                                &kp LPAR  &kp RPAR   &kp UNDER       &none  &none        &none
             >;
         };
 
@@ -284,10 +293,10 @@
         FUN {
             display-name = "Fun";
             bindings = <
-   &kp F12  &kp F7  &kp F8    &kp F9  &kp PSCRN         &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader
-   &kp F11  &kp F4  &kp F5    &kp F6  &kp SLCK           &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI
-   &kp F10  &kp F1  &kp F2    &kp F3  &kp PAUSE_BREAK    &none  &u_to_FUN    &u_to_MEDIA  &kp RALT    &none
-                    &kp K_APP &kp SPACE &kp TAB           &none  &none        &none
+   &none  &kp F12  &kp F7  &kp F8    &kp F9  &kp PSCRN         &none  &u_to_BASE   &u_to_EXTRA  &u_to_TAP   &bootloader  &none
+   &none  &kp F11  &kp F4  &kp F5    &kp F6  &kp SLCK           &none  &kp LSHFT    &kp LCTRL    &kp LALT    &kp LGUI     &none
+   &none  &kp F10  &kp F1  &kp F2    &kp F3  &kp PAUSE_BREAK    &none  &u_to_FUN    &u_to_MEDIA  &kp RALT    &none        &none
+                            &kp K_APP &kp SPACE &kp TAB           &none  &none        &none
             >;
         };
     };
